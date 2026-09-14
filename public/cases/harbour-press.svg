@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" fill="none">
+  <rect width="800" height="1000" fill="#FF2D78"/>
+  <rect x="0" y="0" width="800" height="140" fill="#111"/>
+  <text x="48" y="92" fill="#F3EEE6" font-family="Arial Black, Helvetica, sans-serif" font-size="64" font-weight="800">HARBOUR PRESS</text>
+  <rect x="48" y="220" width="704" height="620" fill="#F3EEE6"/>
+  <text x="80" y="430" fill="#111" font-family="Arial Black, Helvetica, sans-serif" font-size="120" font-weight="800">No.</text>
+  <text x="80" y="560" fill="#111" font-family="Arial Black, Helvetica, sans-serif" font-size="120" font-weight="800">04</text>
+  <text x="80" y="780" fill="#111" font-family="Arial, Helvetica, sans-serif" font-size="28">Copenhagen / Offset</text>
+</svg>
