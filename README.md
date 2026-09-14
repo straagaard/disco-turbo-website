@@ -21,6 +21,4 @@ python3 serve.py
 
 ## Replace content
 
-Edit `src/content.js` for all copy, contact details, colours and projects.
-
-Replace case artwork by swapping the SVG/image files in `public/cases/` (keep the same filenames, or update the `image` paths in `content.js`).
+Edit `src/content.js` for all copy, contact details, colours and client names.

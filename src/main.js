@@ -1,4 +1,5 @@
 import {
+  clients,
   contact,
   footer,
   hero,
@@ -6,7 +7,6 @@ import {
   site,
   studio,
   theme,
-  work,
 } from "./content.js";
 
 const root = document.documentElement;
@@ -27,19 +27,12 @@ function escapeHtml(value) {
     .replaceAll('"', "&quot;");
 }
 
-function parseRoute() {
-  const hash = window.location.hash.replace(/^#/, "");
-  const caseMatch = hash.match(/^work\/([^/?]+)/);
-  if (caseMatch) {
-    return { name: "case", slug: decodeURIComponent(caseMatch[1]) };
-  }
-  return { name: "home" };
-}
-
 function headerMarkup() {
   return `
     <header class="site-header">
-      <a class="logo" href="#top">${escapeHtml(site.name)}</a>
+      <a class="logo" href="#top" aria-label="${escapeHtml(site.name)}">
+        <img src="${escapeHtml(site.logo)}" alt="${escapeHtml(site.name)}" />
+      </a>
       <nav class="nav" data-nav aria-label="Primary">
         <ul>
           ${nav
@@ -105,29 +98,13 @@ function homeMarkup() {
         </div>
       </section>
 
-      <section class="section work" id="${escapeHtml(work.id)}">
-        <div class="section-head">
-          <p class="kicker">${escapeHtml(work.kicker)}</p>
-          <h2>${escapeHtml(work.title)}</h2>
-          <p class="section-body">${escapeHtml(work.intro)}</p>
-        </div>
-        <ul class="work-grid">
-          ${work.projects
+      <section class="section clients" id="${escapeHtml(clients.id)}">
+        <h2 class="clients-caption">${escapeHtml(clients.caption)}</h2>
+        <ul class="client-list">
+          ${clients.names
             .map(
-              (project) => `
-            <li class="work-card reveal">
-              <a href="#work/${escapeHtml(project.slug)}">
-                <article>
-                  <figure>
-                    <img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.imageAlt)}" />
-                  </figure>
-                  <header>
-                    <h3>${escapeHtml(project.title)}</h3>
-                    <p>${escapeHtml(project.meta)} · ${escapeHtml(project.year)}</p>
-                  </header>
-                </article>
-              </a>
-            </li>`,
+              (name) => `
+            <li>${escapeHtml(name)}</li>`,
             )
             .join("")}
         </ul>
@@ -188,76 +165,22 @@ function homeMarkup() {
           <address>
             ${escapeHtml(site.name)}<br />
             ${escapeHtml(site.address.street)}<br />
-            ${escapeHtml(site.address.city)}<br />
-            ${escapeHtml(site.address.country)}
+            ${escapeHtml(site.address.city)}
           </address>
-          <div class="contact-meta">
-            <a href="tel:${escapeHtml(site.phone.replaceAll(" ", ""))}">${escapeHtml(site.phone)}</a>
-            <a href="${escapeHtml(site.instagram.url)}" rel="noreferrer">${escapeHtml(site.instagram.handle)}</a>
-          </div>
+          <ul class="contact-people">
+            ${site.people
+              .map(
+                (person) => `
+              <li>
+                <span>${escapeHtml(person.name)}</span>
+                <a href="tel:${escapeHtml(person.phone.replaceAll(" ", ""))}">${escapeHtml(person.phone)}</a>
+              </li>`,
+              )
+              .join("")}
+          </ul>
+          <a class="contact-instagram" href="${escapeHtml(site.instagram.url)}" rel="noreferrer">${escapeHtml(site.instagram.handle)}</a>
         </div>
       </section>
-    </main>
-    ${footerMarkup()}
-  `;
-}
-
-function caseMarkup(project) {
-  const index = work.projects.findIndex((item) => item.slug === project.slug);
-  const previous = work.projects[(index - 1 + work.projects.length) % work.projects.length];
-  const next = work.projects[(index + 1) % work.projects.length];
-
-  return `
-    ${headerMarkup()}
-    <main id="main" class="case-main">
-      <article class="case-page">
-        <p class="kicker"><a href="#work">Work</a> / ${escapeHtml(project.year)}</p>
-        <h1 class="hero-title">${escapeHtml(project.title)}</h1>
-        <p class="hero-lede">${escapeHtml(project.summary)}</p>
-        <p class="case-meta">${escapeHtml(project.meta)} · ${escapeHtml(project.role)}</p>
-        <figure class="case-figure">
-          <img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.imageAlt)}" />
-        </figure>
-        <div class="case-body">
-          <p>${escapeHtml(project.body)}</p>
-          <p class="case-production">${escapeHtml(project.production)}</p>
-        </div>
-        <ul class="capability-grid case-deliverables">
-          ${project.deliverables
-            .map(
-              (item) => `
-            <li class="reveal">
-              <h3>${escapeHtml(item)}</h3>
-            </li>`,
-            )
-            .join("")}
-        </ul>
-        <nav class="case-nav" aria-label="Cases">
-          <a href="#work/${escapeHtml(previous.slug)}">← ${escapeHtml(previous.title)}</a>
-          <a href="#work">All work</a>
-          <a href="#work/${escapeHtml(next.slug)}">${escapeHtml(next.title)} →</a>
-        </nav>
-        <p class="case-cta">
-          <a class="action action-primary" href="#contact">Start a project</a>
-        </p>
-      </article>
-    </main>
-    ${footerMarkup()}
-  `;
-}
-
-function missingCaseMarkup() {
-  return `
-    ${headerMarkup()}
-    <main id="main" class="case-main">
-      <article class="case-page">
-        <p class="kicker">Work</p>
-        <h1 class="hero-title">Case not found</h1>
-        <p class="hero-lede">That project is not in the current list.</p>
-        <p class="case-cta">
-          <a class="action action-primary" href="#work">Back to work</a>
-        </p>
-      </article>
     </main>
     ${footerMarkup()}
   `;
@@ -331,26 +254,15 @@ function bindReveal() {
 }
 
 function render() {
-  const route = parseRoute();
   document.body.classList.remove("nav-open");
-
-  if (route.name === "case") {
-    const project = work.projects.find((item) => item.slug === route.slug);
-    app.innerHTML = project ? caseMarkup(project) : missingCaseMarkup();
-    document.title = project
-      ? `${project.title} — ${site.name}`
-      : `Work — ${site.name}`;
-    window.scrollTo(0, 0);
-  } else {
-    app.innerHTML = homeMarkup();
-    document.title = "Disco Turbo — Graphic design & print, Copenhagen";
-    const sectionId = window.location.hash.replace(/^#/, "");
-    if (sectionId && !sectionId.startsWith("work/")) {
-      requestAnimationFrame(() => {
-        document.getElementById(sectionId)?.scrollIntoView({ behavior: "auto", block: "start" });
-        bindReveal();
-      });
-    }
+  app.innerHTML = homeMarkup();
+  document.title = "Disco Turbo — Graphic design & print, Copenhagen";
+  const sectionId = window.location.hash.replace(/^#/, "");
+  if (sectionId) {
+    requestAnimationFrame(() => {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "auto", block: "start" });
+      bindReveal();
+    });
   }
 
   bindChrome();
