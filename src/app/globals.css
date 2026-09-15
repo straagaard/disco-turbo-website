@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f3eee6;
+  --ink: #111111;
+  --lime: #d4ff3a;
+  --magenta: #ff2d78;
+  --cyan: #3ae8ff;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-lime: var(--lime);
+  --color-magenta: var(--magenta);
+  --color-cyan: var(--cyan);
+  --font-sans: var(--font-inter-v);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-inter-v), "Inter V", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-synthesis: none;
+  font-variation-settings: "wght" 700, "slnt" -10;
+}
+
+.bread {
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.012em;
+  font-variation-settings: "wght" 400, "slnt" 0;
+}
+
+::selection {
+  background: var(--lime);
+  color: var(--ink);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 36s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
