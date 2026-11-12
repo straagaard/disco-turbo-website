@@ -22,5 +22,6 @@ Open [http://localhost:3000](http://localhost:3000).
 - Colours: `src/app/globals.css`
 - Navigation: `src/components/SiteHeader.tsx`
 - Case images: `public/cases/`
+- Instagram cards: `src/lib/site.ts` + `public/instagram/`
 - Logo: `public/disco-turbo-logo.svg` (exported from DiscoTurbo Logo 3 2026)
 - Typeface: `src/fonts/Inter-V.otf` (Inter V by Rasmus Andersson — not Google Inter)

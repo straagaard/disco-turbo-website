@@ -1,7 +1,7 @@
 export const site = {
   name: "Disco Turbo",
   logo: "/disco-turbo-logo.svg",
-  location: "Copenhagen",
+  location: "København",
   email: "hello@discoturbo.dk",
   instagram: {
     handle: "@discoturbokbh",
@@ -9,20 +9,15 @@ export const site = {
   },
   address: {
     street: "Ringertoften 2, st, th",
-    city: "2400 Copenhagen NV",
+    city: "2400 København NV",
   },
-  people: [
-    { name: "Kristian", phone: "+45 30 66 60 60" },
-    { name: "Lasse", phone: "+45 31 48 10 18" },
-  ],
 };
 
 export const nav = [
-  { label: "Clients", href: "#clients" },
-  { label: "Design", href: "#design" },
-  { label: "Print", href: "#print" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Tryk", href: "#print" },
+  { label: "Kunder", href: "#clients" },
+  { label: "Om", href: "#about" },
+  { label: "Kontakt", href: "#contact" },
 ] as const;
 
 export const clients = [
@@ -34,16 +29,31 @@ export const clients = [
   "Nordhavn Objects",
   "Sunday Market",
   "Palads",
-  "Vesterbro Press",
-  "Amager Light",
-  "Refshaleøen",
-  "Halmtorvet",
+];
+
+export const instagramPosts = [
+  {
+    href: "https://www.instagram.com/discoturbokbh/p/DXt9ojmCLyc/",
+    image: "/instagram/01.jpg",
+  },
+  {
+    href: "https://www.instagram.com/discoturbokbh/p/DXr-Iw8CHA2/",
+    image: "/instagram/02.jpg",
+  },
+  {
+    href: "https://www.instagram.com/discoturbokbh/p/DW3yTxZiCKa/",
+    image: "/instagram/03.jpg",
+  },
+  {
+    href: "https://www.instagram.com/discoturbokbh/p/DWZUBuaiHcT/",
+    image: "/instagram/04.jpg",
+  },
 ];
 
 export const designWork = [
   {
     title: "Atelier Nord",
-    meta: "Identity · 2025",
+    meta: "Identitet · 2025",
     image: "/cases/atelier-nord.svg",
   },
   {
@@ -53,31 +63,31 @@ export const designWork = [
   },
   {
     title: "Pulse Festival",
-    meta: "Campaign · 2025",
+    meta: "Kampagne · 2025",
     image: "/cases/pulse-festival.svg",
   },
   {
     title: "Studio Edition",
-    meta: "Book · 2024",
+    meta: "Bog · 2024",
     image: "/cases/studio-edition.svg",
   },
 ];
 
 export const printWork = [
   {
-    title: "Offset & digital",
-    text: "Short runs, samples and editions with tight colour — on the machines in the back room.",
+    title: "Offset og digital",
+    text: "Korte oplag, prøver og udgaver med præcis farve — på maskinerne i baglokalet.",
   },
   {
-    title: "Large format",
-    text: "Posters, banners and spatial graphics for rooms, façades and streets.",
+    title: "Storformat",
+    text: "Plakater, bannere og rumgrafik til lokaler, facader og gader.",
   },
   {
-    title: "Finishing",
-    text: "Foil, emboss, die-cut, bind. The details that make a sheet feel expensive.",
+    title: "Efterbehandling",
+    text: "Folie, præg, stans, indbinding. Detaljerne der får et ark til at føles dyrt.",
   },
   {
-    title: "Paper & ink",
-    text: "Stock, PMS, CMYK and fluorescent inks. We specify and print the same job.",
+    title: "Papir og farve",
+    text: "Papir, PMS, CMYK og fluorescerende farver. Vi specificerer og trykker det samme job.",
   },
 ];

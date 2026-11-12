@@ -1,19 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f3eee6;
-  --ink: #111111;
-  --lime: #d4ff3a;
-  --magenta: #ff2d78;
-  --cyan: #3ae8ff;
+  --mist: #d8d6d1;
+  --paper: #f3f1ec;
+  --snow: #fbfaf7;
+  --ink: #1a1a1a;
+  --mute: #6a6a6a;
+  --lime: #ff6414;
+  --line: rgba(26, 26, 26, 0.1);
 }
 
 @theme inline {
+  --color-mist: var(--mist);
   --color-paper: var(--paper);
+  --color-snow: var(--snow);
   --color-ink: var(--ink);
+  --color-mute: var(--mute);
   --color-lime: var(--lime);
-  --color-magenta: var(--magenta);
-  --color-cyan: var(--cyan);
+  --color-line: var(--line);
   --font-sans: var(--font-inter-v);
 }
 
@@ -36,7 +40,7 @@ html {
 }
 
 body {
-  background: var(--paper);
+  background: var(--mist);
   color: var(--ink);
   font-family: var(--font-inter-v), "Inter V", sans-serif;
   font-weight: 700;
@@ -55,23 +59,4 @@ body {
 ::selection {
   background: var(--lime);
   color: var(--ink);
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.marquee-track {
-  animation: marquee 36s linear infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
 }

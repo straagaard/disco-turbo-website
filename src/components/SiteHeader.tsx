@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Logo from "@/components/Logo";
-import { nav } from "@/lib/site";
+import { nav, site } from "@/lib/site";
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -16,18 +15,24 @@ export default function SiteHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-ink bg-paper">
-        <div className="flex items-center justify-between gap-6 px-5 py-5 md:px-8 lg:px-12">
-          <a href="#top" className="shrink-0 text-ink" aria-label="Disco Turbo">
-            <Logo className="h-[27px] w-auto md:h-[30px]" />
+      <header className="relative z-50 px-6 py-5 md:px-10 md:py-7">
+        <div className="grid grid-cols-[1fr_auto] items-center gap-4 lg:grid-cols-[1fr_auto_1fr]">
+          <a
+            href={`mailto:${site.email}`}
+            className="bread justify-self-start text-sm text-mute hover:text-ink"
+          >
+            {site.email}
           </a>
 
-          <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+          <nav
+            className="hidden items-center justify-center gap-2 lg:flex"
+            aria-label="Hovedmenu"
+          >
             {nav.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="text-[0.95rem] tracking-tight underline-offset-4 hover:underline"
+                className="px-4 py-1.5 text-[0.85rem] text-ink hover:text-lime"
               >
                 {item.label}
               </a>
@@ -35,20 +40,38 @@ export default function SiteHeader() {
           </nav>
 
           <a
-            href="#contact"
-            className="hidden bg-ink px-4 py-2 text-[0.9rem] text-paper lg:inline-block"
+            href={site.instagram.url}
+            target="_blank"
+            rel="noreferrer"
+            className="bread hidden justify-self-end text-sm text-mute hover:text-ink lg:inline"
           >
-            Start a project
+            Instagram
           </a>
 
           <button
             type="button"
-            className="border border-ink px-3 py-1.5 text-sm lg:hidden"
+            className="relative flex h-10 w-10 items-center justify-center lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
+            aria-label={open ? "Luk menu" : "Åbn menu"}
             onClick={() => setOpen((value) => !value)}
           >
-            {open ? "Close" : "Menu"}
+            <span className="sr-only">{open ? "Luk" : "Menu"}</span>
+            <span
+              className={`absolute h-[2px] w-6 bg-ink transition ${
+                open ? "translate-y-0 rotate-45" : "-translate-y-[7px]"
+              }`}
+            />
+            <span
+              className={`absolute h-[2px] w-6 bg-ink transition ${
+                open ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`absolute h-[2px] w-6 bg-ink transition ${
+                open ? "translate-y-0 -rotate-45" : "translate-y-[7px]"
+              }`}
+            />
           </button>
         </div>
       </header>
@@ -56,14 +79,14 @@ export default function SiteHeader() {
       {open ? (
         <div
           id="mobile-nav"
-          className="fixed inset-0 z-40 bg-lime px-5 pt-24 lg:hidden"
+          className="fixed inset-0 z-40 bg-paper px-6 pt-24 text-center lg:hidden"
         >
-          <nav className="flex flex-col gap-2" aria-label="Mobile">
+          <nav className="flex flex-col items-center gap-3" aria-label="Mobilmenu">
             {nav.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="font-bold italic text-[12vw] leading-[0.95] tracking-tight"
+                className="text-[11vw] leading-[0.95] tracking-tight"
                 onClick={() => {
                   setOpen(false);
                   document.body.style.overflow = "";

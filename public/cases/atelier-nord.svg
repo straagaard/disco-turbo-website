@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" fill="none">
   <rect width="800" height="1000" fill="#111"/>
-  <rect x="72" y="80" width="656" height="840" fill="#D4FF3A"/>
+  <rect x="72" y="80" width="656" height="840" fill="#ff6414"/>
   <text x="96" y="180" fill="#111" font-family="Arial Black, Helvetica, sans-serif" font-size="92" font-weight="800">ATELIER</text>
   <text x="96" y="268" fill="#111" font-family="Arial Black, Helvetica, sans-serif" font-size="92" font-weight="800">NORD</text>
   <circle cx="620" cy="780" r="86" stroke="#111" stroke-width="10"/>

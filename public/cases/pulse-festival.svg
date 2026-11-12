@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" fill="none">
   <rect width="800" height="1000" fill="#3AE8FF"/>
   <rect x="120" y="80" width="560" height="840" fill="#7C5CFF"/>
-  <text x="400" y="430" text-anchor="middle" fill="#D4FF3A" font-family="Arial Black, Helvetica, sans-serif" font-size="140" font-weight="800">PULSE</text>
+  <text x="400" y="430" text-anchor="middle" fill="#ff6414" font-family="Arial Black, Helvetica, sans-serif" font-size="140" font-weight="800">PULSE</text>
   <text x="400" y="560" text-anchor="middle" fill="#F3EEE6" font-family="Arial Black, Helvetica, sans-serif" font-size="72" font-weight="800">FESTIVAL</text>
-  <circle cx="400" cy="720" r="54" fill="#D4FF3A"/>
+  <circle cx="400" cy="720" r="54" fill="#ff6414"/>
 </svg>

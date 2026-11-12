@@ -10,15 +10,15 @@ const interV = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Disco Turbo — Graphic design & print, Copenhagen",
+  title: "Disco Turbo — Grafisk design og tryk, København",
   description:
-    "Disco Turbo is a Copenhagen graphic design agency and print studio. Identities, campaigns and printed matter — designed and produced in-house.",
+    "Disco Turbo er et københavnsk grafisk designbureau og trykkeri. Identiteter, kampagner og tryksager — designet og produceret in-house.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${interV.variable} ${interV.className} h-full antialiased`}>
-      <body className="min-h-full bg-paper font-sans font-bold italic text-ink">
+    <html lang="da" className={`${interV.variable} ${interV.className} h-full antialiased`}>
+      <body className="min-h-full bg-mist font-sans font-bold italic text-ink">
         {children}
       </body>
     </html>
